@@ -1,19 +1,23 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 // import products from '../products';
-import axios from 'axios';
+// import axios from 'axios'; //we are using redux
 import Product from '../components/Product';
 import { Row, Col } from 'react-bootstrap';
+import { listProducts } from '../actions/productActions'
 
 const HomeScreen = () => {
+  const dispatch = useDispatch()
 
-  const [products, setProducts] = useState([]);
+  const productList = useSelector(state => state.productList)
+  const { loading, error, products} = productList;
+
 
   useEffect(() => {
-    axios.get('/api/products')
-    .then(res => setProducts(res.data))
-    .catch(err => console.log(err))
-  }, [])
+    dispatch(listProducts())
+  }, [dispatch])
 
+  // const products = []
   // useEffect(() => {
   //   const fetchProducts = async () => {
   //     const {data} = await axios.get('/api/products')
@@ -27,13 +31,15 @@ const HomeScreen = () => {
   return (
     <>
       <h1>Latest Products</h1>
-      <Row className=''>
-        {products.map(product => (
-          <Col key={product._id} sm={12} md={6} lg={4} xl={3} className='' >
-            <Product product={product}/>
-          </Col>
-        ))}
-      </Row>
+      {loading ? <h2>Loading...</h2> : error ? <h3>{error}</h3> 
+      : <Row className=''>
+       {products.map(product => (
+         <Col key={product._id} sm={12} md={6} lg={4} xl={3} className='' >
+           <Product product={product}/>
+         </Col>
+       ))}
+       </Row>}
+
     </>
   )
 }
