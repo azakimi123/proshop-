@@ -3,7 +3,9 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const productRoutes = require('./routes/productRoutes');
 const userRoutes = require('./routes/userRoutes');
+const orderRoutes = require('./routes/orderRoutes');
 const errorMid = require('./middleware/errorMiddleware');
+
 
 dotenv.config()
 
@@ -26,6 +28,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/orders', orderRoutes);
 
 //fallback for 404 errors, not an actual route
 app.use(errorMid.notFound)
