@@ -12,6 +12,8 @@ import {
   userDetailsReducer,
   userUpdatePofileReducer,
 } from "./reducers/userReducers";
+import { orderCreateReducer } from './reducers/orderReducers';
+
 
 const reducer = combineReducers({
   productList: productListReducer,
@@ -21,6 +23,7 @@ const reducer = combineReducers({
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdatePofileReducer,
+  orderCreate: orderCreateReducer,
 });
 
 //retrieving info from local storate, the cart items
