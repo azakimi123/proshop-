@@ -5,6 +5,7 @@ const productRoutes = require('./routes/productRoutes');
 const userRoutes = require('./routes/userRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const errorMid = require('./middleware/errorMiddleware');
+const { PAYPAL_CLIENT_ID } = process.env;
 
 
 dotenv.config()
@@ -29,6 +30,9 @@ app.get('/', (req, res) => {
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/orders', orderRoutes);
+
+//route to access paypal credentials
+app.get('/api/config/paypal', (req, res) => res.send(process.env.PAYPAL_CLIENT_ID))
 
 //fallback for 404 errors, not an actual route
 app.use(errorMid.notFound)
