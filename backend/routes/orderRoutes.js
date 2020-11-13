@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const orderCTRL = require('../controllers/orderController');
-const protect = require('../middleware/authMiddleware')
+const { protect } = require('../middleware/authMiddleware')
 
 router.route('/').post(protect, orderCTRL.addOrderItems)
 router.route('/myorders').get(protect, orderCTRL.getMyOrders)
