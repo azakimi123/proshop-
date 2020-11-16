@@ -5,10 +5,14 @@ const router = express.Router();
 const productCTRL = require("../controllers/productController");
 const { protect, admin } = require("../middleware/authMiddleware");
 
-router.route("/").get(productCTRL.getProducts);
+router
+  .route("/")
+  .get(productCTRL.getProducts)
+  .post(protect, admin, productCTRL.createProduct);
 router
   .route("/:id")
   .get(productCTRL.getProductById)
-  .delete(protect, admin, productCTRL.deleteProduct);
+  .delete(protect, admin, productCTRL.deleteProduct)
+  .put(protect, admin, productCTRL.updateProduct);
 
 module.exports = router;
