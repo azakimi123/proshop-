@@ -48,7 +48,7 @@ const logoutHandler = () => {
             {/* admin dropdown view */}
             {userInfo && userInfo.isAdmin && (
               <NavDropdown title='Admin' id='adminmenu'>
-              <LinkContainer to='admin/userlist'>
+              <LinkContainer to='/admin/userlist'>
                 <NavDropdown.Item>Users</NavDropdown.Item>
               </LinkContainer>
               <LinkContainer to='/admin/productlist'>
