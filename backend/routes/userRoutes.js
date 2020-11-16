@@ -11,6 +11,10 @@ router
   .route("/profile")
   .get(protect, authCTRL.getUserProfile)
   .put(protect, authCTRL.updateUserProfile);
-router.route("/:id").delete(protect, admin, authCTRL.deleteUser);
+router
+  .route("/:id")
+  .delete(protect, admin, authCTRL.deleteUser)
+  .get(protect, admin, authCTRL.getUserById)
+  .put(protect, admin, authCTRL.updateUser);
 
 module.exports = router;
