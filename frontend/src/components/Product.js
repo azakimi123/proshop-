@@ -6,7 +6,7 @@ import './Product.css'
 
 const Product = ({ product }) => {
   return (
-    <Card className="my-3 p-3 rounded shadow">
+    <Card className="my-3 p-3 rounded shadow text-grey">
       <Link to={`/product/${product._id}`}>
         {/* <Figure>
           <Figure.Image
@@ -23,11 +23,11 @@ const Product = ({ product }) => {
 
       <Card.Body>
         <Link to={`/product/${product._id}`}>
-          <Card.Title as="div">
+          <Card.Title as="div" className='card-title'>
             <strong>{product.name}</strong>
           </Card.Title>
         </Link>
-        <Card.Text as="div">
+        <Card.Text as="div" style={{color: 'grey'}}>
           <Rating
             value={product.rating}
             text={`${product.numReviews} reviews`}
