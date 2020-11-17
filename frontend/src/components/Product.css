@@ -9,3 +9,11 @@
   width: 100%;
   object-fit: cover;
 }
+
+.card-title{
+  color: rgb(97, 97, 97);
+}
+
+.card-title:hover{
+  text-decoration: underline;
+}
