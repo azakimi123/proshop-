@@ -1,9 +1,11 @@
+const path = require('path');
 const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const productRoutes = require('./routes/productRoutes');
 const userRoutes = require('./routes/userRoutes');
 const orderRoutes = require('./routes/orderRoutes');
+const uploadRoutes = require('./routes/uploadRoutes');
 const errorMid = require('./middleware/errorMiddleware');
 const { PAYPAL_CLIENT_ID } = process.env;
 
@@ -30,9 +32,18 @@ app.get('/', (req, res) => {
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/orders', orderRoutes);
+app.use('/api/upload', uploadRoutes);
 
 //route to access paypal credentials
 app.get('/api/config/paypal', (req, res) => res.send(process.env.PAYPAL_CLIENT_ID))
+
+
+//if you are using module import syntax
+// const __dirname = path.resolve()
+
+//making uploads a static folder with express
+const folder = path.resolve()
+app.use('/uploads', express.static(path.join(folder, '/uploads')));
 
 //fallback for 404 errors, not an actual route
 app.use(errorMid.notFound)
