@@ -1,4 +1,8 @@
 import React from "react";
+import SearchBox from './SearchBox';
+//need to bring in Route because search box is embedded in header does not have access to history and match
+//using a render prop to display search box, and then destructuring history and passing it as a prop see line 33
+import { Route } from 'react-router-dom';
 //call an action from Redux with useDispatch
 //call state from Redux with useSelector
 import { useDispatch, useSelector} from 'react-redux';
@@ -26,6 +30,7 @@ const logoutHandler = () => {
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
+            <Route render={({ history }) => <SearchBox history={history} />} />
             <Nav className="ml-auto">
               <LinkContainer to="/cart">
                 <Nav.Link>
