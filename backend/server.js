@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const dotenv = require('dotenv');
+const morgan = require('morgan');
 const connectDB = require('./config/db');
 const productRoutes = require('./routes/productRoutes');
 const userRoutes = require('./routes/userRoutes');
@@ -18,6 +19,11 @@ const app = express();
 
 //parse JSON data from the req.body
 app.use(express.json());
+
+//morgan to run only in dev mode
+if(process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'))
+}
 
 //example of how to set up a middleware
 // app.use((req, res, next) => {
