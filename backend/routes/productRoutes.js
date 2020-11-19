@@ -9,6 +9,7 @@ router
   .route("/")
   .get(productCTRL.getProducts)
   .post(protect, admin, productCTRL.createProduct);
+router.route("/:id/reviews").post(protect, productCTRL.createProductReview)
 router
   .route("/:id")
   .get(productCTRL.getProductById)
