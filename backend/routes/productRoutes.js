@@ -10,6 +10,7 @@ router
   .get(productCTRL.getProducts)
   .post(protect, admin, productCTRL.createProduct);
 router.route("/:id/reviews").post(protect, productCTRL.createProductReview)
+router.get('/top', productCTRL.getTopProducts)
 router
   .route("/:id")
   .get(productCTRL.getProductById)
