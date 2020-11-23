@@ -8,6 +8,7 @@ import Loader from "../components/Loader";
 import Paginate from '../components/Paginate';
 import { Row, Col } from "react-bootstrap";
 import { listProducts } from "../actions/productActions";
+import ProductCarousel from "../components/ProductCarousel";
 
 const HomeScreen = ({ match }) => {
   //search variables
@@ -37,6 +38,10 @@ const HomeScreen = ({ match }) => {
 
   return (
     <>
+    <div className='top-banner'>
+      <h1>WELCOME TO PROSHOP</h1>
+    {!keyword && <ProductCarousel />}
+    </div>
       <h1>Latest Products</h1>
       {loading ? (
         <Loader />
