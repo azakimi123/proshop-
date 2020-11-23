@@ -20,3 +20,55 @@ h2{
   margin: 0.05rem;
 }
 
+/*carousel */
+
+.top-banner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 4em;
+}
+
+.top-banner h1{
+  font-size: 4em;
+  margin-bottom: 1em;
+}
+
+.carousel{
+  height: 20em;
+  width: 50em;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 3px 6px 0 rgba(0, 0, 0, 0.19);
+}
+
+.carousel-item-next,
+.carousel-item-prev,
+.carousel-item.active {
+  height: 20em;
+  width: 50em;
+  display: flex;
+}
+
+.carousel-caption {
+  position: absolute;
+  top: 0;
+}
+
+.carousel-caption h2 {
+  color: black;
+}
+
+
+.carousel img {
+  height: 20em;
+  width: 50em;
+  object-fit: cover;
+  /* height: 300px;
+  padding: 30px;
+  margin: 40px; */
+  /* border-radius: 50%; */
+}
+
+.carousel a {
+  margin: 0 auto;
+}
+
